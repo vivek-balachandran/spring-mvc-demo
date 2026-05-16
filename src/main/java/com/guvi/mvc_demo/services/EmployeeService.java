@@ -42,13 +42,13 @@ public class EmployeeService {
 
     public List<Employee> getAllEmployeeFromJdbc() {
         final String sql = "SELECT * FROM employee";
-        return jdbcTemplate.query(sql, (rs, row) -> {
-            return Employee.builder()
+        return jdbcTemplate.query(sql, (rs, row) ->
+            Employee.builder()
                     .id(rs.getLong("id"))
                     .name(rs.getString("name"))
                     .department(rs.getString("department"))
-                    .build();
-        });
+                    .build()
+        );
     }
 
     public List<Employee> getEmployeeByDepartment(String department) {
